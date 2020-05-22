@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Movie Registration";
+}
+@model Movie
+<h2 style="background-color: limegreen; color: white;">Movie Registration</h2>
+
+<form action="Register" method="get">
+    <div>
+        <table>
+            <tr>
+                <td><label for="ID">ID</label></td>
+                <td>
+                    <input type="number" name="ID" id="ID" min="0" placeholder="ID" required />
+                </td>
+            </tr>
+            <tr>
+                <td><label for="Title">Title</label></td>
+                <td>
+                    <input type="text" name="Title" id="Title" maxlength="50" pattern="[ '\" a-zA-Z]+" placeholder="Title" required />
+                </td>
+            </tr>
+            <tr>
+                <td><label for="Genre">Genre</label></td>
+                <td>
+                    <select name="Genre" id="Genre">
+                        <option>Action</option>
+                        <option>Comedy</option>
+                        <option>Drama</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="Year">Year</label></td>
+                <td>
+                    <input type="number" name="Year" id="Year" min="1880" max="@DateTime.Now.Year" placeholder="Year" required />
+                </td>
+            </tr>
+            <tr>
+                <td><label for="Actors">Actors</label></td>
+                <td><input type="text" name="Actors" id="Actors" placeholder="Actors" /></td>
+            </tr>
+            <tr>
+                <td><label for="Directors">Directors</label></td>
+                <td><input type="text" name="Directors" id="Directors" placeholder="Directors" /></td>
+            </tr>
+        </table>
+        <br />
+        <input type="submit" value="Register" />
+    </div>
+</form>

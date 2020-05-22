@@ -1,0 +1,20 @@
+﻿
+@{
+    Layout = null;
+}
+@model Movie
+
+<h2 style="background-color: limegreen; color: white; font-family:Arial;">Movie Registration</h2>
+
+@if (Model != null)
+{
+<div>
+    <p>&quot;@Model.Title&quot; has been registered</p>
+    <br />
+    <p>ID = @Model.ID</p>
+    <p>Genre = @Model.Genre</p>
+    <p>Year = @Model.Year</p>
+    <p>Actors = @Model.Actors</p>
+    <p>Directors = @Model.Directors</p>
+</div>
+}
