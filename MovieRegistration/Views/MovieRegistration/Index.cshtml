@@ -1,0 +1,55 @@
+﻿
+@model List<Movie>
+<h2 style="background-color: limegreen; color: white;">Movie List</h2>
+
+@if (ViewData["MovieAddCartMessage"] != null)
+{
+    <div class="app-message">
+        <p>@ViewData["MovieAddCartMessage"]</p>
+    </div>
+    ViewData["MovieAddCartMessage"] = null;
+}
+
+
+<div id="movie-list" class="text-center">
+    @if (Model is null)
+    {
+        <p>No movies in the shop!</p>
+    }
+    else
+    {
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Run Time (mins)</th>
+                <th></th>
+            </tr>
+            @foreach (Movie movie in Model)
+            {
+        <tr>
+            <td>@movie.Title</td>
+            <td>@movie.RunTimeMins</td>
+            <td>
+            <td><a href="/MovieRegistration/AddMovieToCart?id=@movie.ID">Add to Cart</a></td>
+            </td>
+            @*
+                @Html.ActionLink("Add to Cart", $"AddMovieToCart", "MovieRegistration", new { ID = movie.ID }, null)
+            <td><a href="@Url.Action("AddMovieToCart", "MovieRegistration", new { area = "MovieRegistration" })">Add to Cart</a></td>
+            @Url.Action("AddMovieToCart?id=@movie.ID", "Controller", new { area = "MovieRegistration" })
+            <td><a href="/MovieRegistration/AddMovieToCart?ID=@movie.ID">Add to Cart</a></td>
+            <th>ID</th>
+            <th>Genre</th>
+            <th>Year</th>
+            <th>Actors</th>
+            <th>Directors</th>
+        <td>@movie.ID</td>
+        <td>@movie.Genre</td>
+        <td>@movie.Year</td>
+        <td>@movie.Actors</td>
+        <td>@movie.Directors</td>
+            *@
+        </tr>
+            }
+        </table>
+    }
+</div>

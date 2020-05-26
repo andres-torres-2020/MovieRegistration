@@ -1,0 +1,8 @@
+﻿
+@if (ViewData["MovieResultMessage"] != null)
+{
+    <div class="app-message">
+        <p>@ViewData["MovieResultMessage"]</p>
+    </div>
+    ViewData["MovieResultMessage"] = null;
+}

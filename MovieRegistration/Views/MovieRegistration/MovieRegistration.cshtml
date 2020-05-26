@@ -4,6 +4,25 @@
 @model Movie
 <h2 style="background-color: limegreen; color: white;">Movie Registration</h2>
 
+@*Result message section:
+    Any previously saved Movie processing messages are saved in
+    ViewData/TempData and will be purged after it is displayed.
+*@
+@if (ViewData["MovieResultMessage"] != null)
+{
+    <div class="app-message">
+        <p>@ViewData["MovieResultMessage"]</p>
+    </div>
+    ViewData["MovieResultMessage"] = null;
+    TempData["MovieResultMessage"] = null;
+}
+else if (TempData["MovieResultMessage"] != null)
+{
+    <div class="app-message">
+        <p>@TempData["MovieResultMessage"]</p>
+    </div>
+}
+
 <div asp-validation-summary="All" class="text-danger"></div>
 
 <form action="Register" method="get">
@@ -22,11 +41,18 @@
                 </td>
             </tr>
             <tr>
+                <td><label for="RunTimeMins">Run Time (minutes)</label></td>
+                <td>
+                    <input type="number" name="RunTimeMins" id="RunTimeMins" min="0" placeholder="Run Time (minutes)" required />
+                </td>
+            </tr>
+            <tr>
                 <td><label for="Genre">Genre</label></td>
                 <td>
                     <select name="Genre" id="Genre">
                         <option>Action</option>
                         <option>Comedy</option>
+                        <option>Documentary</option>
                         <option>Drama</option>
                     </select>
                 </td>

@@ -1,0 +1,32 @@
+﻿@model List<Movie>
+
+    <div>
+        <h2 style="background-color: limegreen; color: white;">Movie Cart</h2>
+        <table>
+            @if ((Model is null) || Model.Count == 0)
+            {
+                <tr>
+                    <td>No items in cart</td>
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    <th>Title</th>
+                </tr>
+                @foreach (Movie movie in Model)
+                {
+                    <tr>
+                        <td>@movie.Title</td>
+                    </tr>
+                }
+                <tr>
+                    <td>
+                        <form action="Receipt" method="post">
+                            <input type="submit" value="Checkout" />
+                        </form>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>

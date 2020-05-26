@@ -1,0 +1,31 @@
+﻿
+@model List<Movie>
+
+<div>
+    <h2 style="background-color: limegreen; color: white;">Receipt</h2>
+
+    @if (Model is null || Model.Count == 0)
+    {
+        <p>No movies in cart!</p>
+    }
+    else
+    {
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Cost</th>
+            </tr>
+            @foreach (Movie movie in Model)
+            {
+                <tr>
+                    <td>@movie.Title</td>
+                    <td>$6.99</td>
+                </tr>
+            }
+            <tr>
+                <th align="right">Total</th>
+                <th>$ @Math.Round((6.99 * Model.Count), 2)</th>
+            </tr>
+        </table>
+    }
+</div>
